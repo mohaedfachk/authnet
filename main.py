@@ -1,4 +1,4 @@
-random random
+import random
 import string
 import re
 import requests
@@ -12,8 +12,9 @@ def home():
 
 
     
-@app.route("/ch/")    
-def chk(g):
+@app.route("/calc", methods=["GET"])
+def chk():
+	g = request.args.get("cc")
 	url = "https://shop.superantispyware.com/sas/carts/"
 	
 	headers = {
